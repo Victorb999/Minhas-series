@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,Switch
+} from 'react-router-dom'
+
+import './estilao.css'
+import Header from './Header'
+import Home from './Home'
+import Generos from './Generos'
+import NovoGenero from './NovoGenero'
+import EditaGenero from './EditaGenero'
+import Series from './Series'
+import NovaSerie from './NovaSerie'
+import InfoSerie from './InfoSerie'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Switch>
+        <Route path='/' exact component={Home}/>
+        <Route path='/generos' exact component={Generos}/>
+        <Route exact path='/generos/novo' component={NovoGenero}/>
+        <Route exact path='/generos/:id'  component={EditaGenero}/>
+
+        <Route path='/series' exact component={Series}/>
+        <Route exact path='/series/novo' component={NovaSerie}/>
+        <Route exact path='/series/:id'  component={InfoSerie}/>
+      </Switch>
+    </Router>
   );
 }
 
-export default App;
+export default App
